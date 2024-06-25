@@ -1,0 +1,106 @@
+@import '../../themes/theme.scss';
+
+.label {
+  color: var(--gray300);
+}
+
+.datePickerWrapper {
+  width: 100%;
+}
+
+.datePicker {
+  user-select: none;
+  width: 100%;
+  outline: none;
+  background: none;
+  border: 1px solid var(--dc045);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-family: $fontInter;
+  font-size: $sub_heading_four;
+  line-height: $leading_sub_heading_four;
+  font-weight: $fw500;
+  color: var(--dc011);
+  transition: all 0.3s;
+  -webkit-border-radius: 8px;
+
+  &:hover {
+    border-color: var(--blue500);
+  }
+
+  &:focus {
+    border-color: var(--blue500);
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+  }
+
+  &::placeholder {
+    color: var(--dc014);
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+.datePickerIcon {
+  position: absolute;
+  right: 16px;
+  top: -33px;
+}
+
+.scrollWrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  height: 170px;
+  position: relative;
+  justify-content: space-around;
+}
+
+.scrollItemWrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100%/3);
+}
+
+.scrollItem {
+  width: 100%;
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.scrollSelect {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  height: 35px;
+  width: 100%;
+  background-color: #161616;
+  border-radius: 4px;
+  z-index: -1;
+  -webkit-border-radius: 4px
+}
+
+.input {
+  color: var(--white_dark400);
+
+  &.rawValue {
+    color: var(--dc011);
+  }
+}
+
+.wrapperCard {
+  margin-bottom: 8px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--white_opacity10);
+  padding-bottom: 7px;
+}

@@ -1,0 +1,10 @@
+.link {
+  background-color: transparent;
+  color: var(--fgColor-accent, var(--color-accent-fg));
+  text-decoration: none;
+  &:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

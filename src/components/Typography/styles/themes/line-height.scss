@@ -1,0 +1,30 @@
+@use "sass:math";
+
+@function rem($value) {
+  @return #{math.div($value, 16)}rem;
+}
+
+$leading_heading_one: rem(54);
+$leading_heading_two: rem(36);
+$leading_heading_three: rem(30);
+$leading_heading_fourth: rem(26);
+$leading_heading_fifth: rem(26);
+$leading_heading_six: rem(24);
+
+$leading_sub_heading_one: rem(24);
+$leading_sub_heading_two: rem(24);
+$leading_sub_heading_three: rem(20);
+$leading_sub_heading_four: rem(20);
+
+$leading_body_one: rem(24);
+$leading_body_two: rem(20);
+$leading_body_content_one: rem(36);
+$leading_body_content_two: rem(30);
+$leading_body_content_three: rem(24);
+
+$leading_caption: rem(18);
+$leading_caption_two: rem(18);
+$leading_caption_three: rem(18);
+
+$leading_small_one: rem(16);
+$leading_small_two: rem(16);

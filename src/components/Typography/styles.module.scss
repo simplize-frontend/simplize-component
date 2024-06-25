@@ -1,0 +1,70 @@
+@import './styles/variant-typo.scss';
+
+.wapper {
+  color: var(--dc011);
+
+  &.heading_one {
+    @include variantTypography(heading_one);
+  }
+  &.heading_two {
+    @include variantTypography(heading_two);
+  }
+  &.heading_three {
+    @include variantTypography(heading_three);
+  }
+  &.heading_fourth {
+    @include variantTypography(heading_fourth);
+  }
+  &.heading_fifth {
+    @include variantTypography(heading_fifth);
+  }
+  &.heading_six {
+    @include variantTypography(heading_six);
+  }
+
+  &.sub_heading_one {
+    @include variantTypography(sub_heading_one);
+  }
+  &.sub_heading_two {
+    @include variantTypography(sub_heading_two);
+  }
+  &.sub_heading_three {
+    @include variantTypography(sub_heading_three);
+  }
+  &.sub_heading_four {
+    @include variantTypography(sub_heading_four);
+  }
+
+  &.body_one {
+    @include variantTypography(body_one);
+  }
+  &.body_two {
+    @include variantTypography(body_two);
+  }
+  &.body_content_one {
+    @include variantTypography(body_content_one);
+  }
+  &.body_content_two {
+    @include variantTypography(body_content_two);
+  }
+  &.body_content_three {
+    @include variantTypography(body_content_three);
+  }
+
+  &.caption {
+    @include variantTypography(caption);
+  }
+  &.caption_two {
+    @include variantTypography(caption_two);
+  }
+  &.caption_three {
+    @include variantTypography(caption_three);
+  }
+
+  &.small_one {
+    @include variantTypography(small_one);
+  }
+  &.small_two {
+    @include variantTypography(small_two);
+  }
+}
