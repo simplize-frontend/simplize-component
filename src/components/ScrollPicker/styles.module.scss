@@ -1,4 +1,4 @@
-@import '../../themes/theme.scss';
+@import '../../styles/theme.scss';
 
 .label {
   color: var(--gray300);
@@ -30,7 +30,7 @@
 
   &:focus {
     border-color: var(--blue500);
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   }
 
   &::placeholder {
@@ -63,7 +63,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  width: calc(100%/3);
+  width: calc(100% / 3);
 }
 
 .scrollItem {
@@ -84,7 +84,7 @@
   background-color: #161616;
   border-radius: 4px;
   z-index: -1;
-  -webkit-border-radius: 4px
+  -webkit-border-radius: 4px;
 }
 
 .input {

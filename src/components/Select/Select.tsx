@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import Typography from '@/components/Typography';
 
-import BottomSheet from '@/components/BottomSheet';
 import { PolygonIcon } from './PolygonIcon';
+import BottomSheet from '../BottomSheet';
+import Typography from '../Typography';
 const cx = classNames.bind(styles);
 
 interface Props {
