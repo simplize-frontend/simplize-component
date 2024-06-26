@@ -1,36 +1,41 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
+import { defineConfig } from 'vite';
+import { extname, relative, resolve } from 'path';
+import { fileURLToPath } from 'node:url';
+import { glob } from 'glob';
+import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
+// https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [react(), libInjectCss(), dts({ include: ['src'] })],
   build: {
-    //Specifies that the output of the build will be a library.
+    copyPublicDir: false,
     lib: {
-      //Defines the entry point for the library build. It resolves
-      //to src/index.ts,indicating that the library starts from this file.
-      entry: "./src/index.ts",
-      name: "simplize-component",
-      //A function that generates the output file
-      // name for different formats during the build
-      fileName: (format) => `index.${format}.js`,
+      entry: resolve(__dirname, 'src/index.ts'),
+      formats: ['es'],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ['react', 'react/jsx-runtime'],
+      input: Object.fromEntries(
+        // https://rollupjs.org/configuration-options/#input
+        glob
+          .sync('src/**/*.{ts,tsx}', {
+            ignore: ['src/**/*.d.ts'],
+          })
+          .map((file) => [
+            // 1. The name of the entry point
+            // lib/nested/foo.js becomes nested/foo
+            relative('src', file.slice(0, file.length - extname(file).length)),
+            // 2. The absolute path to the entry file
+            // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
+            fileURLToPath(new URL(file, import.meta.url)),
+          ])
+      ),
       output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: '[name].js',
       },
     },
-    //Generates sourcemaps for the built files,
-    //aiding in debugging.
-    sourcemap: false,
-    //Clears the output directory before building.
-    emptyOutDir: true,
   },
-  //react() enables React support.
-  //dts() generates TypeScript declaration files (*.d.ts)
-  //during the build.
-  plugins: [react(), dts()],
 });
