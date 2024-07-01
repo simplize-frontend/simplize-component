@@ -38,6 +38,7 @@
       "@@/*": ["./*"]
     }
   },
-  "include": ["src", "vite.config.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src", "vite.config.ts", "lib"],
+  "exclude": ["node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
