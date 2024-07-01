@@ -1,0 +1,81 @@
+// import { Theme } from '@/themes/theme'
+// import { css, keyframes } from '@emotion/react'
+
+.slideNext {
+  position: fixed;
+  top: 0;
+  transform: translateX(0%);
+  left: 0;
+  width: 100vw;
+  z-index: 2;
+  animation: slideNextK 150ms linear 0s 1 normal forwards;
+}
+
+.baseNext {
+  position: fixed;
+  width: 100vw;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  transform: translateX(-20%);
+  z-index: 1;
+  animation: baseNextK 150ms linear 0s 1 normal forwards;
+}
+.slidePre {
+  position: fixed;
+  top: 0;
+  transform: translateX(100%);
+  left: 0;
+  width: 100vw;
+  z-index: 2;
+  animation: slidePreK 150ms linear 0s 1 normal forwards;
+}
+.basePrev {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  opacity: 1;
+  transform: translateX(0%);
+  left: 0;
+  z-index: 1;
+  animation: basePreK 150ms linear 0s 1 normal forwards;
+}
+
+@keyframes basePreK {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes baseNextK {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+}
+@keyframes slidePreK {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes slideNextK {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
