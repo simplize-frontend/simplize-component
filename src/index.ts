@@ -1,7 +1,7 @@
 export { default as BackButton } from './components/BackButton';
 export { default as BottomSheet } from './components/BottomSheet';
 export { default as DatePicker } from './components/DatePicker';
-export { default as Link } from './components/Link';
+export { default as Header } from './components/DatePicker';
 export { default as NativeInit } from './components/NativeInit';
 export { default as NativeMethod } from './components/NativeMethod';
 export { default as NavigateAnimation } from './components/NavigateAnimation';
