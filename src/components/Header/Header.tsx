@@ -9,16 +9,15 @@ interface Props {
   title?: React.ReactNode;
   contentRight?: React.ReactNode;
   contentLeft?: React.ReactNode;
-  backButton: React.ReactNode;
 }
 
 const Header: React.FC<Props> = (props): JSX.Element => {
-  const { ref, title, contentLeft, contentRight, backButton } = props;
+  const { ref, title, contentLeft, contentRight } = props;
 
   return (
     <div className={header('wrapper')} ref={ref}>
       <div className={header('content-left')}>
-        {contentLeft ? contentLeft : backButton}
+        {contentLeft ? contentLeft : <></>}
       </div>
       <div className={header('title')}>
         <Typography variant="sub_heading_two">{title}</Typography>

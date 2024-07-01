@@ -22,7 +22,7 @@ interface Props {
   type?: 'date' | 'datetime';
 }
 
-const WarningPeriod: React.FC<Props> = (props): JSX.Element => {
+const DatePicker: React.FC<Props> = (props): JSX.Element => {
   const {
     defaultValue,
     onChange,
@@ -190,4 +190,4 @@ function getDaysInMonth(
   return days;
 }
 
-export default WarningPeriod;
+export default DatePicker;
