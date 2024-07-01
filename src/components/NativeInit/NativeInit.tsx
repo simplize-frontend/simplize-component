@@ -5,7 +5,6 @@ interface Props {
   children: any;
   downloadPage: any;
   dispathUserInfo: any;
-  getMembershipInfo: any;
   theme: string;
   navigate: any;
   initApi: any;
