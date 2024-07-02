@@ -58,8 +58,9 @@ const Select: React.FC<Props> = (props): JSX.Element => {
           <Typography variant="caption_two" className={cx('title')}>
             Giá cổ phiếu
           </Typography>
-          {options.map((item) => (
+          {options.map((item, index) => (
             <div
+              key={index}
               className={cx(
                 'item-wrapper',
                 selected === item.value ? 'active' : ''
