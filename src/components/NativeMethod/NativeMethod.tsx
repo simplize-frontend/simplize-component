@@ -135,6 +135,7 @@ const NativeMethod = {
   addEventListener: ({ name, handle }) => {
     NativeModel.set({ name, handle });
   },
+  nativeStatus: () => NativeModel.isNative,
   callHandler: ({ name, args }) => {
     NativeModel.callHandler({
       name: name,

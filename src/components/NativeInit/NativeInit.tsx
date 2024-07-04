@@ -13,6 +13,7 @@ const NativeInit: React.FC<Props> = (props) => {
   const { children, downloadPage, dispathUserInfo, theme, navigate, initApi } =
     props;
   const [isInit, setIsInit] = React.useState(false);
+  const [isShowBlockPage, setShowBlockPage] = React.useState(false);
 
   const getUserInfo = React.useCallback(() => {
     (async () => {
@@ -26,11 +27,10 @@ const NativeInit: React.FC<Props> = (props) => {
   }, [NativeMethod]);
 
   const action = React.useCallback(() => {
+    const theme = localStorage.getItem('sim-theme') || 'dark';
     getUserInfo();
     document.getElementsByTagName('html')[0]!.setAttribute('data-theme', theme);
-    setTimeout(() => {
-      NativeMethod.loading.loadingDone();
-    }, 10);
+    NativeMethod.loading.loadingDone();
     NativeMethod.addEventListener({
       name: 'JsToNative_navigate',
       handle: (params) => {
@@ -55,7 +55,17 @@ const NativeInit: React.FC<Props> = (props) => {
     };
   }, [action]);
 
-  return isInit ? children : downloadPage;
+  React.useEffect(() => {
+    if (isInit) return;
+    const id = setTimeout(() => {
+      setShowBlockPage(true);
+    }, 3000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [isInit]);
+
+  return isInit ? children : isShowBlockPage ? downloadPage : <></>;
 };
 
 export default NativeInit;
