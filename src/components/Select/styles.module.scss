@@ -29,3 +29,18 @@
 .active {
   background-color: var(--white_opacity5);
 }
+
+.container {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.wrapper-fit {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: Calc(100% - 20px);
+}

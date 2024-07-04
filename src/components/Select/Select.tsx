@@ -10,12 +10,23 @@ const cx = classNames.bind(styles);
 interface Props {
   defaultValue?: any;
   className?: any;
-  options: { value: any; label: any }[];
+  location?: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
+  options: { value: any; label: any; isDisable?: boolean }[];
   onChange: (value) => void;
+  header?: JSX.Element;
+  onDisable?: (value) => void;
 }
 
 const Select: React.FC<Props> = (props): JSX.Element => {
-  const { defaultValue, options, onChange, className } = props;
+  const {
+    defaultValue,
+    options,
+    onChange,
+    className,
+    location = 'fit',
+    onDisable,
+    header,
+  } = props;
   const [isOpenBottomsheet, setIsOpenBottomsheet] = React.useState(false);
 
   const [selected, setSelected] = React.useState(defaultValue);
@@ -52,12 +63,13 @@ const Select: React.FC<Props> = (props): JSX.Element => {
       <BottomSheet
         isOpen={isOpenBottomsheet}
         setIsOpen={setIsOpenBottomsheet}
-        location="fit"
+        location={location}
+        contentWrapperClassname={
+          location === 'fit' ? cx('wrapper-fit') : cx('wrapper')
+        }
       >
+        {header}
         <div className={cx('container')}>
-          <Typography variant="caption_two" className={cx('title')}>
-            Giá cổ phiếu
-          </Typography>
           {options.map((item, index) => (
             <div
               key={index}
@@ -66,10 +78,19 @@ const Select: React.FC<Props> = (props): JSX.Element => {
                 selected === item.value ? 'active' : ''
               )}
               onClick={() => {
-                handleChange(item.value);
+                if (item.isDisable) {
+                  onDisable && onDisable(item.value);
+                } else {
+                  handleChange(item.value);
+                }
               }}
             >
-              <Typography variant="sub_heading_four">{item.label}</Typography>
+              {typeof item.label === 'string' ||
+              typeof item.label === 'number' ? (
+                <Typography variant="sub_heading_four">{item.label}</Typography>
+              ) : (
+                item.label
+              )}
             </div>
           ))}
         </div>

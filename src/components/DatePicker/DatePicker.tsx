@@ -135,32 +135,34 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
             <div className={datePicker('shadowTop')}></div>
             <div className={datePicker('shadowBottom')}></div>
             <div className={datePicker('scrollSelect')}></div>
-            <ScrollPicker
-              defaultValue={rawValue.DD}
-              listSelect={DATES || []}
-              onChange={(e) => {
-                setRawValue((prev) => ({ ...prev, DD: e }));
-              }}
-            />
-            <ScrollPicker
-              defaultValue={rawValue.MM}
-              prefix={'tháng '}
-              listSelect={MONTHS || []}
-              onChange={(e) => {
-                setRawValue((prev) => ({ ...prev, MM: e }));
-              }}
-            />
-            <ScrollPicker
-              defaultValue={rawValue.YYYY}
-              listSelect={YEARS || []}
-              onChange={(e) => {
-                setRawValue((prev) => ({ ...prev, YYYY: e }));
-              }}
-            />
+            <div className={datePicker('sideWrapper', 'sideWrapperLeft')}>
+              <ScrollPicker
+                defaultValue={rawValue.DD}
+                listSelect={DATES || []}
+                onChange={(e) => {
+                  setRawValue((prev) => ({ ...prev, DD: e }));
+                }}
+              />
+              <ScrollPicker
+                defaultValue={rawValue.MM}
+                prefix={'tháng '}
+                listSelect={MONTHS || []}
+                onChange={(e) => {
+                  setRawValue((prev) => ({ ...prev, MM: e }));
+                }}
+              />
+              <ScrollPicker
+                defaultValue={rawValue.YYYY}
+                listSelect={YEARS || []}
+                onChange={(e) => {
+                  setRawValue((prev) => ({ ...prev, YYYY: e }));
+                }}
+              />
+            </div>
             {type === 'datetime' && (
-              <>
+              <div className={datePicker('sideWrapper', 'sideWrapperRight')}>
                 <ScrollPicker
-                  className={datePicker('sideSpace')}
+                  className={datePicker('sideSpace', 'timeWrapper')}
                   defaultValue={rawValue.hh}
                   listSelect={HOURS || []}
                   onChange={(e) => {
@@ -168,6 +170,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
                   }}
                 />
                 <ScrollPicker
+                  className={datePicker('timeWrapper')}
                   defaultValue={rawValue.mm}
                   width={20}
                   listSelect={MINUTES || []}
@@ -175,7 +178,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
                     setRawValue((prev) => ({ ...prev, mm: e }));
                   }}
                 />
-              </>
+              </div>
             )}
           </div>
         )}

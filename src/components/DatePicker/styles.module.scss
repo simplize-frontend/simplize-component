@@ -52,12 +52,24 @@
   display: flex;
   flex-direction: row;
   height: 170px;
+  padding: 0 20px;
   position: relative;
   justify-content: space-around;
 }
-.sideSpace {
-  margin-left: 20px;
+.sideWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
+.sideWrapperLeft {
+  width: 60%;
+}
+.sideWrapperRight {
+  width: 25%;
+}
+// .sideSpace {
+//   margin-left: 20px;
+// }
 .scrollItemWrapper {
   overflow-x: hidden;
   overflow-y: auto;

@@ -6,6 +6,7 @@ const cx = classNames.bind(styles);
 interface Props {
   isOpen: boolean;
   setIsOpen: any;
+  contentWrapperClassname?: string;
   isLockLocation?: boolean;
   location: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
   children?: any;
@@ -17,6 +18,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
     children,
     location,
     isLockLocation = false,
+    contentWrapperClassname,
   } = props;
 
   const contentRef = React.useRef<any>();
@@ -43,6 +45,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
     const height =
       (childRef.current.offsetHeight + extentRef.current.offsetHeight + 16) /
       window.innerHeight;
+
     setFitHeight(height > 1 ? 1 : height < 0 ? 0 : height);
   }, [childRef, children, extentRef]);
 
@@ -146,7 +149,9 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
         }}
       >
         <div className={cx('extend-wrapper')} ref={extentRef}></div>
-        <div ref={childRef}>{children}</div>
+        <div ref={childRef} className={contentWrapperClassname}>
+          {children}
+        </div>
       </div>
     </div>
   );
