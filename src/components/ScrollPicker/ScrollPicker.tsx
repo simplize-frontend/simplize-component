@@ -1,19 +1,22 @@
 import React from 'react';
-import Typography from '../Typography';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
+import Typography from '../Typography';
 
 // type Props = React.ComponentPropsWithoutRef<typeof ReactDatePicker>
 
 interface PropsScrollPicker {
   listSelect: any[];
   defaultValue: any;
+  className?: any;
   onChange: any;
   prefix?: any;
+  width?: any;
 }
 
 const ScrollPicker: React.FC<PropsScrollPicker> = (props): JSX.Element => {
-  const { listSelect, defaultValue, onChange, prefix } = props;
+  const { listSelect, defaultValue, onChange, prefix, className, width } =
+    props;
 
   const datePicker = classNames.bind(styles);
 
@@ -24,9 +27,10 @@ const ScrollPicker: React.FC<PropsScrollPicker> = (props): JSX.Element => {
   const [value, setValue] = React.useState<any>();
 
   React.useEffect(() => {
+    if (!scrollRef.current) return;
     setValue(defaultValue);
     scrollRef.current.setAttribute('style', 'scroll-behavior: smooth');
-  }, [defaultValue]);
+  }, [defaultValue, scrollRef.current]);
 
   React.useEffect(() => {
     if (!scrollRef.current) return;
@@ -34,7 +38,8 @@ const ScrollPicker: React.FC<PropsScrollPicker> = (props): JSX.Element => {
       clearTimeout(timeOut.current);
     }
     timeOut.current = setTimeout(() => {
-      const position = scrollRef.current.scrollTop;
+      if (!scrollRef.current) return;
+      const position = scrollRef.current?.scrollTop;
       const currPos = listSelect.indexOf(value);
       if (position !== currPos * 35) {
         scrollRef.current.scrollTop = currPos * 35;
@@ -71,65 +76,87 @@ const ScrollPicker: React.FC<PropsScrollPicker> = (props): JSX.Element => {
       // console.log(scroll[i], pos)
       if (scroll !== pos && pos % 35 === 0) {
         scroll = pos;
-        e.target.scrollTop = pos;
+        e.scrollTop = pos;
       }
     };
 
-    const handleCorrectPossition = (e) => {
-      if (touch['touch'] === true || touch['scroll'] === true) return;
-      const pos = scrollRef.current.scrollTop;
+    const handleCorrectPossition = () => {
+      if (
+        touch['touch'] === true ||
+        touch['scroll'] === true ||
+        !scrollRef.current
+      )
+        return;
+      const ele = scrollRef.current;
+      const pos = ele?.scrollTop;
 
       if (pos === roundTop(pos)) {
         scroll = -1;
       }
       if (pos % 35 !== 0) {
         const corr = roundTop(pos);
-        scrollToPos(e, corr);
+        scrollToPos(ele, corr);
       } else {
         setValue(listSelect[pos / 35]);
       }
     };
+    let timer: any = null;
     const handleScroll = () => {
       touch['scroll'] = true;
+      if (timer !== null) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(function () {
+        touch['scroll'] = false;
+        handleCorrectPossition();
+      }, 150);
     };
     const handleTouchStart = () => {
       touch['touch'] = true;
     };
-    const handleTouchEnd = (e) => {
+    const handleTouchEnd = () => {
       touch['touch'] = false;
-      handleCorrectPossition(e);
+      handleCorrectPossition();
     };
-    const handleScrollEnd = (e) => {
-      setTimeout(function () {
-        touch['scroll'] = false;
-        handleCorrectPossition(e);
-      }, 50);
-    };
+    // const handleScrollEnd = (e) => {
+    //   setTimeout(function () {
+    //     touch['scroll'] = false;
+    //     handleCorrectPossition(e);
+    //   }, 50);
+    // };
 
     scrollRef.current.addEventListener('scroll', handleScroll);
-    scrollRef.current.addEventListener('scrollend', handleScrollEnd);
+    // scrollRef.current.addEventListener('scrollend', handleScrollEnd);
     scrollRef.current.addEventListener('touchstart', handleTouchStart);
     scrollRef.current.addEventListener('touchend', handleTouchEnd);
 
     return () => {
+      if (!scrollRef.current) return;
       scrollRef.current.removeEventListener('scroll', handleScroll);
-      scrollRef.current.removeEventListener('scrollend', handleScrollEnd);
+      // scrollRef.current.removeEventListener('scrollend', handleScrollEnd);
       scrollRef.current.removeEventListener('touchstart', handleTouchStart);
       scrollRef.current.removeEventListener('touchend', handleTouchEnd);
     };
   }, [scrollRef, listSelect]);
 
   return (
-    <div className={datePicker('scrollItemWrapper')} ref={scrollRef}>
+    <div
+      className={datePicker('scrollItemWrapper', className)}
+      ref={scrollRef}
+      style={{
+        width: width + 'px',
+      }}
+    >
       {Array(2)
         .fill(0)
         .map(() => (
-          <div className={datePicker('scrollItem')}>
+          <div className={datePicker('scrollItem')} key={Math.random()}>
             <Typography variant="body_one"></Typography>
           </div>
         ))}
-      {listSelect.map((item) => (
+      {listSelect.map((item, index) => (
         <div
+          key={index}
           className={datePicker('scrollItem')}
           onClick={() => {
             setValue(item);
@@ -137,14 +164,14 @@ const ScrollPicker: React.FC<PropsScrollPicker> = (props): JSX.Element => {
         >
           <Typography variant="body_one">
             {prefix}
-            {item}
+            {prefix ? item : String(item).padStart(2, '0')}
           </Typography>
         </div>
       ))}
       {Array(2)
         .fill(0)
         .map(() => (
-          <div className={datePicker('scrollItem')}>
+          <div className={datePicker('scrollItem')} key={Math.random()}>
             <Typography variant="body_one"></Typography>
           </div>
         ))}

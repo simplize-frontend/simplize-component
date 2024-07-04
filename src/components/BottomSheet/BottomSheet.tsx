@@ -6,11 +6,18 @@ const cx = classNames.bind(styles);
 interface Props {
   isOpen: boolean;
   setIsOpen: any;
+  isLockLocation?: boolean;
   location: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
   children?: any;
 }
 const BottomSheet: React.FC<Props> = (props): JSX.Element => {
-  const { isOpen, setIsOpen, children, location } = props;
+  const {
+    isOpen,
+    setIsOpen,
+    children,
+    location,
+    isLockLocation = false,
+  } = props;
 
   const contentRef = React.useRef<any>();
   const childRef = React.useRef<any>();
@@ -57,14 +64,22 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
       if (!contentRef.current) return;
       const content: HTMLElement = contentRef.current;
       let locationChanged: number = e.changedTouches[0].pageY;
+
       if (locationChanged < 0) {
         locationChanged = 0;
+      }
+
+      if (
+        isLockLocation &&
+        locationChanged < (1 - defaultLocation) * window.innerHeight
+      ) {
+        locationChanged = (1 - defaultLocation) * window.innerHeight;
       }
       content.style.transition = 'none';
       content.style.top = locationChanged + 'px';
       content.style.height = 'Calc(100vh - ' + locationChanged + 'px)';
     },
-    [contentRef, defaultLocation, handleClose]
+    [contentRef.current, defaultLocation, isLockLocation]
   );
   const handleTouchend = React.useCallback(
     (e) => {
@@ -76,7 +91,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
       const locateOfState = Object.values(locationList);
       const currentLocation =
         1 - e.changedTouches[0].pageY / window.innerHeight;
-      const fixedLocation = locateOfState.reduce((prev, curr) => {
+      let fixedLocation = locateOfState.reduce((prev, curr) => {
         return Math.abs(curr - currentLocation) <
           Math.abs(prev - currentLocation)
           ? curr
@@ -85,6 +100,10 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
 
       const content: HTMLElement = contentRef.current;
       if (fixedLocation > 0) {
+        if (isLockLocation && fixedLocation > defaultLocation) {
+          fixedLocation = defaultLocation;
+        }
+
         content.style.top = (1 - fixedLocation) * 100 + 'vh';
         content.style.height = fixedLocation * 100 + 'vh';
         content.style.transition = 'all 0.1s';
@@ -92,7 +111,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
         handleClose();
       }
     },
-    [contentRef, defaultLocation, handleClose, locationList]
+    [contentRef, handleClose, locationList]
   );
 
   React.useEffect(() => {
@@ -107,7 +126,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
       extentRef.current?.removeEventListener('touchmove', handleTouchmove);
       extentRef.current?.removeEventListener('touchend', handleTouchend);
     };
-  }, [extentRef]);
+  }, [extentRef, handleTouchmove, handleTouchend]);
 
   return (
     <div className={`${cx('wrapper')} ${isOpen ? cx('show') : cx('hide')}`}>

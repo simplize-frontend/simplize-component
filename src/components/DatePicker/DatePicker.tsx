@@ -1,9 +1,9 @@
 import React from 'react';
-import BottomSheet from '../BottomSheet';
-import Typography from '../Typography';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import ScrollPicker from '../ScrollPicker';
+import BottomSheet from '../BottomSheet';
+import Typography from '../Typography';
 const datePicker = classNames.bind(styles);
 
 interface Props {
@@ -17,7 +17,8 @@ interface Props {
     YYYY: number;
   }) => any;
   yearList?: number[];
-  title?: string;
+  header?: JSX.Element;
+  isDisable?: boolean;
   isFuture?: boolean;
   type?: 'date' | 'datetime';
 }
@@ -27,9 +28,10 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
     defaultValue,
     onChange,
     yearList,
-    title,
+    header,
     isFuture,
     type,
+    isDisable = false,
     elementDisplay,
   } = props;
   const [isSelectOpen, setIsSelectOpen] = React.useState(false);
@@ -40,11 +42,11 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
     MM: number;
     YYYY: number;
   }>({
-    mm: 0,
-    hh: 0,
-    DD: 0,
-    MM: 0,
-    YYYY: 0,
+    mm: defaultValue?.getMinutes() || 0,
+    hh: defaultValue?.getHours() || 0,
+    DD: defaultValue?.getDate() || 1,
+    MM: (defaultValue?.getMonth() || 0) + 1,
+    YYYY: defaultValue?.getFullYear() || 1975,
   });
 
   const HOURS = Array.from({ length: 24 }, (_, i) => i);
@@ -110,7 +112,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
               {isSelectOpen &&
               Object.values(rawValue).every((item) => item === 0)
                 ? 'dd/mm/yyyy'
-                : `${rawValue.DD}/${rawValue.MM}/${rawValue.YYYY}`}
+                : `${String(rawValue.DD).padStart(2, '0')}/${String(rawValue.MM).padStart(2, '0')}/${String(rawValue.YYYY).padStart(2, '0')}`}
             </Typography>
           </div>
         )}
@@ -119,14 +121,19 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
         isOpen={isSelectOpen}
         setIsOpen={setIsSelectOpen}
         location="fit"
+        isLockLocation
       >
-        <div className={datePicker('wrapperCard')}>
-          <Typography variant="caption_two" className={datePicker('label')}>
-            {title || 'Chọn thời gian'}
-          </Typography>
-        </div>
+        {header || (
+          <div className={datePicker('wrapperCard')}>
+            <Typography variant="caption_two" className={datePicker('label')}>
+              {'Chọn thời gian'}
+            </Typography>
+          </div>
+        )}
         {!Object.values(rawValue).every((item) => item === 0) && (
-          <div className={datePicker('scrollWrapper')}>
+          <div className={datePicker('scrollWrapper', isDisable && 'disable')}>
+            <div className={datePicker('shadowTop')}></div>
+            <div className={datePicker('shadowBottom')}></div>
             <div className={datePicker('scrollSelect')}></div>
             <ScrollPicker
               defaultValue={rawValue.DD}
@@ -153,6 +160,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
             {type === 'datetime' && (
               <>
                 <ScrollPicker
+                  className={datePicker('sideSpace')}
                   defaultValue={rawValue.hh}
                   listSelect={HOURS || []}
                   onChange={(e) => {
@@ -161,6 +169,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
                 />
                 <ScrollPicker
                   defaultValue={rawValue.mm}
+                  width={20}
                   listSelect={MINUTES || []}
                   onChange={(e) => {
                     setRawValue((prev) => ({ ...prev, mm: e }));
