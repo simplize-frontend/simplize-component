@@ -1,30 +1,26 @@
-@use "sass:math";
+:root {
+  --leading_heading_one: 3.375rem; // 54px
+  --leading_heading_two: 2.25rem; // 36px
+  --leading_heading_three: 1.875rem; // 30px
+  --leading_heading_fourth: 1.625rem; // 26px
+  --leading_heading_fifth: 1.625rem; // 26px
+  --leading_heading_six: 1.5rem; // 24px
 
-@function rem($value) {
-  @return #{math.div($value, 16)}rem;
+  --leading_sub_heading_one: 1.5rem; // 24px
+  --leading_sub_heading_two: 1.5rem; // 24px
+  --leading_sub_heading_three: 1.25rem; // 20px
+  --leading_sub_heading_four: 1.25rem; // 20px
+
+  --leading_body_one: 1.5rem; // 24px
+  --leading_body_two: 1.25rem; // 20px
+  --leading_body_content_one: 2.25rem; // 36px
+  --leading_body_content_two: 1.875rem; // 30px
+  --leading_body_content_three: 1.5rem; // 24px
+
+  --leading_caption: 1.125rem; // 18px
+  --leading_caption_two: 1.125rem; // 18px
+  --leading_caption_three: 1.125rem; // 18px
+
+  --leading_small_one: 1rem; // 16px
+  --leading_small_two: 1rem; // 16px
 }
-
-$leading_heading_one: rem(54);
-$leading_heading_two: rem(36);
-$leading_heading_three: rem(30);
-$leading_heading_fourth: rem(26);
-$leading_heading_fifth: rem(26);
-$leading_heading_six: rem(24);
-
-$leading_sub_heading_one: rem(24);
-$leading_sub_heading_two: rem(24);
-$leading_sub_heading_three: rem(20);
-$leading_sub_heading_four: rem(20);
-
-$leading_body_one: rem(24);
-$leading_body_two: rem(20);
-$leading_body_content_one: rem(36);
-$leading_body_content_two: rem(30);
-$leading_body_content_three: rem(24);
-
-$leading_caption: rem(18);
-$leading_caption_two: rem(18);
-$leading_caption_three: rem(18);
-
-$leading_small_one: rem(16);
-$leading_small_two: rem(16);

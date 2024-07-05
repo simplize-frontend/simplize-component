@@ -1,30 +1,26 @@
-@use "sass:math";
+:root {
+  --heading_one: 2.25rem; /* 36px / 16px */
+  --heading_two: 1.5rem; /* 24px / 16px */
+  --heading_three: 1.25rem; /* 20px / 16px */
+  --heading_fourth: 1.125rem; /* 18px / 16px */
+  --heading_fifth: 1.125rem; /* 18px / 16px */
+  --heading_six: 1rem; /* 16px / 16px */
 
-@function rem($value) {
-  @return #{math.div($value, 16)}rem;
+  --sub_heading_one: 1rem; /* 16px / 16px */
+  --sub_heading_two: 1rem; /* 16px / 16px */
+  --sub_heading_three: 0.875rem; /* 14px / 16px */
+  --sub_heading_four: 0.875rem; /* 14px / 16px */
+
+  --body_one: 1rem; /* 16px / 16px */
+  --body_two: 0.875rem; /* 14px / 16px */
+  --body_content_one: 1.25rem; /* 20px / 16px */
+  --body_content_two: 1.125rem; /* 18px / 16px */
+  --body_content_three: 1rem; /* 16px / 16px */
+
+  --caption: 0.75rem; /* 12px / 16px */
+  --caption_two: 0.75rem; /* 12px / 16px */
+  --caption_three: 0.75rem; /* 12px / 16px */
+
+  --small_one: 0.625rem; /* 10px / 16px */
+  --small_two: 0.625rem; /* 10px / 16px */
 }
-
-$heading_one: rem(36);
-$heading_two: rem(24);
-$heading_three: rem(20);
-$heading_fourth: rem(18);
-$heading_fifth: rem(18);
-$heading_six: rem(16);
-
-$sub_heading_one: rem(16);
-$sub_heading_two: rem(16);
-$sub_heading_three: rem(14);
-$sub_heading_four: rem(14);
-
-$body_one: rem(16);
-$body_two: rem(14);
-$body_content_one: rem(20);
-$body_content_two: rem(18);
-$body_content_three: rem(16);
-
-$caption: rem(12);
-$caption_two: rem(12);
-$caption_three: rem(12);
-
-$small_one: rem(10);
-$small_two: rem(36);
