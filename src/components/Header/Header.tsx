@@ -6,7 +6,7 @@ const header = classNames.bind(styles);
 
 interface Props {
   ref?: any;
-  title?: React.ReactNode;
+  title?: string | React.ReactNode;
   contentRight?: React.ReactNode;
   contentLeft?: React.ReactNode;
 }
@@ -20,7 +20,11 @@ const Header: React.FC<Props> = (props): JSX.Element => {
         {contentLeft ? contentLeft : <></>}
       </div>
       <div className={header('title')}>
-        <Typography variant="sub_heading_two">{title}</Typography>
+        {typeof title === 'string' ? (
+          <Typography variant="sub_heading_two">{title}</Typography>
+        ) : (
+          title
+        )}
       </div>
       <div className={header('content-right')}>
         {contentRight ? contentRight : <></>}

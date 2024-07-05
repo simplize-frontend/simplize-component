@@ -3,10 +3,9 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 const cx = classNames.bind(styles);
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   isOpen: boolean;
   setIsOpen: any;
-  contentWrapperClassname?: string;
   isLockLocation?: boolean;
   location: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
   children?: any;
@@ -18,7 +17,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
     children,
     location,
     isLockLocation = false,
-    contentWrapperClassname,
+    ...rest
   } = props;
 
   const contentRef = React.useRef<any>();
@@ -149,7 +148,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
         }}
       >
         <div className={cx('extend-wrapper')} ref={extentRef}></div>
-        <div ref={childRef} className={contentWrapperClassname}>
+        <div ref={childRef} {...rest}>
           {children}
         </div>
       </div>

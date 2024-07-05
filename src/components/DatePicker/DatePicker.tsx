@@ -15,7 +15,7 @@ interface Props {
     DD: number;
     MM: number;
     YYYY: number;
-  }) => any;
+  }) => JSX.Element;
   yearList?: number[];
   header?: JSX.Element;
   isDisable?: boolean;
@@ -30,7 +30,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
     yearList,
     header,
     isFuture,
-    type,
+    type = 'date',
     isDisable = false,
     elementDisplay,
   } = props;
@@ -42,11 +42,11 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
     MM: number;
     YYYY: number;
   }>({
-    mm: defaultValue?.getMinutes() || 0,
-    hh: defaultValue?.getHours() || 0,
-    DD: defaultValue?.getDate() || 1,
-    MM: (defaultValue?.getMonth() || 0) + 1,
-    YYYY: defaultValue?.getFullYear() || 1975,
+    mm: defaultValue?.getMinutes() || new Date().getMinutes(),
+    hh: defaultValue?.getHours() || new Date().getHours(),
+    DD: defaultValue?.getDate() || new Date()?.getDate(),
+    MM: (defaultValue?.getMonth() || new Date()?.getMonth()) + 1,
+    YYYY: defaultValue?.getFullYear() || new Date()?.getFullYear(),
   });
 
   const HOURS = Array.from({ length: 24 }, (_, i) => i);
@@ -112,7 +112,12 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
               {isSelectOpen &&
               Object.values(rawValue).every((item) => item === 0)
                 ? 'dd/mm/yyyy'
-                : `${String(rawValue.DD).padStart(2, '0')}/${String(rawValue.MM).padStart(2, '0')}/${String(rawValue.YYYY).padStart(2, '0')}`}
+                : `${String(rawValue.DD).padStart(2, '0')}/${String(
+                    rawValue.MM
+                  ).padStart(2, '0')}/${String(rawValue.YYYY).padStart(
+                    2,
+                    '0'
+                  )}`}
             </Typography>
           </div>
         )}

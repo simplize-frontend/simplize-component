@@ -4,17 +4,32 @@
   position: fixed;
   background-color: var(--background_dark);
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 56px;
   z-index: 10;
   align-items: center;
   justify-content: space-between;
   transition: ease 0.4s;
 }
-// .title {
-// }
+.title {
+  position: absolute;
+  width: 70%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
-// .content-left {
-// }
-// .content-right {
-// }
+.content-left {
+  position: absolute;
+  width: 10%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.content-right {
+  position: absolute;
+  width: 10%;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

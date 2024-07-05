@@ -3,18 +3,22 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 
 import { PolygonIcon } from './PolygonIcon';
-import BottomSheet from '../BottomSheet';
 import Typography from '../Typography';
+import BottomSheet from '../BottomSheet';
 const cx = classNames.bind(styles);
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   defaultValue?: any;
-  className?: any;
   location?: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
+  elementDisplay?: (option: {
+    value: any;
+    label: any;
+    isDisable?: boolean;
+  }) => JSX.Element;
   options: { value: any; label: any; isDisable?: boolean }[];
   onChange: (value) => void;
   header?: JSX.Element;
-  onDisable?: (value) => void;
+  onDisableSelect?: (value) => void;
 }
 
 const Select: React.FC<Props> = (props): JSX.Element => {
@@ -22,10 +26,11 @@ const Select: React.FC<Props> = (props): JSX.Element => {
     defaultValue,
     options,
     onChange,
-    className,
     location = 'fit',
-    onDisable,
+    onDisableSelect,
     header,
+    elementDisplay,
+    ...rest
   } = props;
   const [isOpenBottomsheet, setIsOpenBottomsheet] = React.useState(false);
 
@@ -40,31 +45,39 @@ const Select: React.FC<Props> = (props): JSX.Element => {
   return (
     <>
       <div
-        className={cx('selected-wrapper', className)}
         onClick={() => {
           setIsOpenBottomsheet(true);
         }}
+        style={{
+          width: 'fit-content',
+        }}
       >
-        <Typography variant="body_two" className={cx('line-limit')}>
-          {options.filter((e) => e.value === selected)[0].label}
-        </Typography>
-        <div
-          style={{
-            minWidth: '10px',
-            minHeight: '6px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <PolygonIcon />
-        </div>
+        {elementDisplay !== undefined ? (
+          elementDisplay(options.filter((e) => e.value === selected)[0])
+        ) : (
+          <div {...rest} className={cx('selected-wrapper', rest.className)}>
+            <Typography variant="body_two" className={cx('line-limit')}>
+              {options.filter((e) => e.value === selected)[0].label}
+            </Typography>
+            <div
+              style={{
+                minWidth: '10px',
+                minHeight: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <PolygonIcon />
+            </div>
+          </div>
+        )}
       </div>
       <BottomSheet
         isOpen={isOpenBottomsheet}
         setIsOpen={setIsOpenBottomsheet}
         location={location}
-        contentWrapperClassname={
+        className={
           location === 'fit' ? cx('wrapper-fit') : cx('wrapper')
         }
       >
@@ -79,7 +92,7 @@ const Select: React.FC<Props> = (props): JSX.Element => {
               )}
               onClick={() => {
                 if (item.isDisable) {
-                  onDisable && onDisable(item.value);
+                  onDisableSelect && onDisableSelect(item.value);
                 } else {
                   handleChange(item.value);
                 }
