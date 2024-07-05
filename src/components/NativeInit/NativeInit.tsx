@@ -1,6 +1,6 @@
 import React from 'react';
 import NativeMethod from '../NativeMethod';
-import DownloadPage from '@/pages/DownloadPage';
+import DownloadPage from '../DownloadPage';
 
 interface Props {
   children: any;
