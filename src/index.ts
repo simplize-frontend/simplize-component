@@ -9,3 +9,4 @@ export { default as ScrollPicker } from './components/ScrollPicker';
 export { default as Select } from './components/Select';
 export { default as Typography } from './components/Typography';
 export { default as MediaInput } from './components/MediaInput';
+export { default as DownloadPage } from './pages/DownloadPage';

@@ -1,17 +1,16 @@
 import React from 'react';
 import NativeMethod from '../NativeMethod';
+import DownloadPage from '@/pages/DownloadPage';
 
 interface Props {
   children: any;
-  downloadPage: any;
   dispathUserInfo: any;
   theme: string;
   navigate: any;
   initApi: any;
 }
 const NativeInit: React.FC<Props> = (props) => {
-  const { children, downloadPage, dispathUserInfo, theme, navigate, initApi } =
-    props;
+  const { children, dispathUserInfo, theme, navigate, initApi } = props;
   const [isInit, setIsInit] = React.useState(false);
   const [isShowBlockPage, setShowBlockPage] = React.useState(false);
 
@@ -65,7 +64,7 @@ const NativeInit: React.FC<Props> = (props) => {
     };
   }, [isInit]);
 
-  return isInit ? children : isShowBlockPage ? downloadPage : <></>;
+  return isInit ? children : isShowBlockPage ? <DownloadPage /> : <></>;
 };
 
 export default NativeInit;

@@ -1,0 +1,38 @@
+.title-heading {
+  font-weight: 700;
+  line-height: 54px;
+  text-align: center;
+  display: block;
+  margin: 60px 0 16px;
+}
+
+.heading-lorem {
+  text-align: center;
+  display: block;
+  color: var(--gray300);
+  padding: 0 16px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.heading-app {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.heading-wrapper {
+  width: 100%;
+  margin-left: 0;
+}
+
+.heading-store {
+  display: block;
+  background-color: var(--white_opacity70);
+  border-radius: 20px;
+  margin: 24px 16px;
+  height: 56px;
+  padding: 14px 16px;
+}
