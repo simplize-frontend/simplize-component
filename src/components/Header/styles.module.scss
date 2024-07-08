@@ -13,7 +13,8 @@
 }
 .title {
   position: absolute;
-  width: 70%;
+  width: 100%;
+  padding: 0 45px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -21,14 +22,16 @@
 
 .content-left {
   position: absolute;
-  width: 10%;
+  width: fit-content;
   left: 0;
+  padding: 16px;
   top: 50%;
   transform: translateY(-50%);
 }
 .content-right {
   position: absolute;
-  width: 10%;
+  width: fit-content;
+  padding: 16px;
   right: 0;
   top: 50%;
   transform: translateY(-50%);

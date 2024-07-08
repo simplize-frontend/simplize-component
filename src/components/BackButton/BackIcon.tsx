@@ -7,21 +7,19 @@ export const BackIcon = React.forwardRef<any, SVGProps<SVGSVGElement>>(
       <svg
         {...props}
         ref={ref}
-        width={13}
-        height={20}
-        viewBox="0 0 13 20"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        width={11}
+        height={18}
+        viewBox="0 0 11 18"
+        fill="none"
       >
         <path
-          id="next"
-          d="M11 2L3 10L11 18"
+          d="M10 1L2 9L10 17"
           stroke="#999999"
-          strokeWidth={4}
+          strokeWidth={2}
           strokeLinecap="round"
         />
       </svg>
-
     );
   }
 );
