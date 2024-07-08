@@ -4,8 +4,8 @@ import styles from './styles.module.scss';
 
 import { PolygonIcon } from './PolygonIcon';
 import { CheckedIcon } from './CheckedIcon';
-import Typography from '../Typography';
 import BottomSheet from '../BottomSheet';
+import Typography from '../Typography';
 const cx = classNames.bind(styles);
 
 export interface valueProp {
@@ -46,18 +46,38 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
   const [isOpenBottomsheet, setIsOpenBottomsheet] = React.useState(false);
 
   const [selected, setSelected] = React.useState<any[]>(defaultValues);
+  const [scrollLocation, setScrollLocation] = React.useState<any>(0);
 
-  const handleChange = React.useCallback((value) => {
-    setSelected((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  }, []);
+  const scrollRef = React.useRef<any>();
+
+  const handleChange = React.useCallback(
+    (value) => {
+      setSelected(
+        selected.includes(value)
+          ? selected.filter((item) => item !== value)
+          : [...selected, value]
+      );
+      onChange(selected);
+    },
+    [setSelected, selected]
+  );
 
   React.useEffect(() => {
-    onChange(selected);
-  }, [selected]);
+    if (!scrollRef || !scrollRef.current) return;
+    const handleScroll = (e) => {
+      setScrollLocation(e.target.scrollTop);
+    };
+    scrollRef.current.addEventListener('scroll', handleScroll);
+    return () => {
+      scrollRef.current.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollRef, setScrollLocation]);
+
+  React.useEffect(() => {
+    document
+      .getElementsByClassName(cx('container'))[0]
+      .scrollTo({ top: scrollLocation });
+  }, [scrollLocation, selected]);
 
   return (
     <>
@@ -102,13 +122,13 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
         isOpen={isOpenBottomsheet}
         setIsOpen={setIsOpenBottomsheet}
         location={location}
-        className={location === 'fit' ? cx('wrapper-fit') : cx('wrapper')}
+        className={cx('wrapper')}
       >
         {header}
-        <div className={cx('container')}>
-          {options.map((item, index) => (
+        <div className={cx('container')} ref={scrollRef}>
+          {options.map((item) => (
             <div
-              key={index}
+              key={item.value}
               className={cx(
                 'item-wrapper',
                 selected.includes(item.value) ? 'active' : ''
@@ -128,7 +148,7 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
                 item.label
               )}
               <div className={cx('checked-icon')}>
-                {selected.includes(item.value) ? <CheckedIcon /> : <></>}
+                <CheckedIcon />
               </div>
             </div>
           ))}

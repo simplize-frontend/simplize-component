@@ -20,12 +20,6 @@
   color: var(--gray300) !important;
 }
 
-.item-wrapper {
-  padding: 8px 16px;
-  user-select: none;
-  // transition: background 0.3s;
-}
-
 .active {
   background-color: var(--white_opacity5);
 }
@@ -35,18 +29,23 @@
   flex-grow: 1;
 }
 
-.wrapper-fit {
-  display: flex;
-  flex-direction: column;
-  max-height: Calc(100vh - 20px);
-}
 .wrapper {
   display: flex;
   flex-direction: column;
   height: Calc(100% - 20px);
 }
+
 .disable {
   * {
     color: var(--gray300) !important;
   }
+}
+
+.item-wrapper {
+  padding: 8px 16px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // transition: background 0.3s;
 }

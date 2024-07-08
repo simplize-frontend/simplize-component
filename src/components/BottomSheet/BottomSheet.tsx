@@ -41,9 +41,11 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
   React.useEffect(() => {
     if (!childRef || !childRef.current) return;
     if (!extentRef || !extentRef.current) return;
+    childRef.current.style.height = 'fit-content';
     const height =
       (childRef.current.offsetHeight + extentRef.current.offsetHeight + 16) /
       window.innerHeight;
+    childRef.current.style.height = "";
 
     setFitHeight(height > 1 ? 1 : height < 0 ? 0 : height);
   }, [childRef, children, extentRef]);

@@ -3,8 +3,8 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 
 import { PolygonIcon } from './PolygonIcon';
-import Typography from '../Typography';
 import BottomSheet from '../BottomSheet';
+import Typography from '../Typography';
 const cx = classNames.bind(styles);
 
 interface Props extends React.ComponentPropsWithoutRef<'div'> {
@@ -86,7 +86,7 @@ const Select: React.FC<Props> = (props): JSX.Element => {
         isOpen={isOpenBottomsheet}
         setIsOpen={setIsOpenBottomsheet}
         location={location}
-        className={location === 'fit' ? cx('wrapper-fit') : cx('wrapper')}
+        className={cx('wrapper')}
       >
         {header}
         <div className={cx('container')}>
