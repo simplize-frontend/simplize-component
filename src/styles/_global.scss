@@ -5,23 +5,9 @@
 // @import 'react-datepicker/dist/react-datepicker.css';
 // @import 'react-lazy-load-image-component/src/effects/blur.css';
 
-// libs
-@import './libs/table';
-@import './libs/tabs';
-@import './libs/input';
-@import './libs/dropdown';
-@import './libs/menu';
-@import './libs/dialog';
-@import './libs/grid-layout';
-@import './libs/nprogress';
-@import './libs/pagination';
-@import './libs/select';
-@import './libs/tooltip';
-@import './libs/notification';
-
 // customs
 @import './customs/animations';
-@import '../themes/theme.scss';
+@import './typo/theme.scss';
 @import './themes/colors';
 @import './themes/dark';
 @import './themes/light';
