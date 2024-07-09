@@ -1,10 +1,10 @@
-import { Storage } from '@/utils/constants/storage';
-import { decodeJwt } from '@/utils/jwt';
-import { deleteLocalData } from '@/utils/local-data-handler';
+import { Storage } from '../utils/constants/storage';
+import { decodeJwt } from '../utils/jwt';
+import { deleteLocalData } from '../utils/local-data-handler';
 import {
   getSessionStorageItem,
   setSessionStorageItem,
-} from '@/utils/storage/session-storage';
+} from '../utils/storage/session-storage';
 import axios, {
   AxiosError,
   AxiosInstance,
