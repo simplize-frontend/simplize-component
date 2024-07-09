@@ -10,6 +10,6 @@ export { default as Select } from './components/Select';
 export { default as MultipleSelect } from './components/MultipleSelect';
 export { default as Typography } from './components/Typography';
 export { default as MediaInput } from './components/MediaInput';
-export { default as theme } from './components/Theme';
+export { theme } from './themes/theme';
 export { default as GlobalStyles } from './components/GlobalStyles';
 export { default as DownloadPage } from './components/DownloadPage';
