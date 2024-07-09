@@ -1,0 +1,19 @@
+name: GitHub Actions - Pull Request Builder
+
+on: pull_request
+
+jobs:
+  prod_build:
+    name: Build Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Build Project
+        run: npm run build
