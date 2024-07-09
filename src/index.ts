@@ -20,3 +20,4 @@ export * from './themes';
 export * from './utils';
 export * from './utils/storage';
 export * from './layouts';
+export * from './types';
