@@ -1,5 +1,4 @@
 import React from 'react';
-import 'moment/locale/vi';
 import '../../styles/_global.scss';
 
 interface Props {
