@@ -1,0 +1,189 @@
+:root {
+  --simplizeBlue: #006cec; // primary
+  --simplizeOrange: #ec8000; // secondary
+
+  // primary
+  --blue700: #002047;
+  --blue600: #0056bd;
+  --blue500: #006cec;
+  --blue400: #3389f0;
+  --blue300: #b3d3fa;
+  --blue200: #e6f1fe;
+  --blue100: #f2f7fe;
+  --blue_opacity80: #006ceccc;
+  --blue_opacity30: #006cec4c;
+  --blue_opacity10: #006cec19;
+  --blue_opacity5: #006cec0c;
+
+  // secondary
+  --orange600: #bd6600;
+  --orange500: #ec8000;
+  --orange400: #f09933;
+  --orange300: #fad9b3;
+  --orange200: #fef3e6;
+  --orange100: #fef8f2;
+  --orange_opacity80: #ec8000cc;
+  --orange_opacity30: #ec80004c;
+  --orange_opacity10: #ec800019;
+  --orange_opacity5: #ec80000c;
+
+  // base Color Palette
+  // text color
+  --gray600: #18222c;
+  --gray500: #22313f;
+  --gray400: #656f79;
+  --gray300: #a7adb2;
+  --gray200: #e9ebec;
+  --gray100: #f4f4f5;
+  --gray_opacity70: #22313fb2;
+  --gray_opacity40: #22313f66;
+  --gray_opacity10: #22313f19;
+  --gray_opacity5: #22313f0c;
+
+  // black
+  --black600: #000000;
+  --black500: #1a1a1a;
+  --black400: #4d4d4d;
+  --black300: #999999;
+  --black200: #e6e6e6;
+  --black100: #f2f2f2;
+  --black_opacity90: #000000e5;
+  --black_opacity70: #000000b2;
+  --black_opacity40: #00000066;
+  --black_opacity30: #0000004d;
+  --black_opacity10: #00000019;
+  --black_opacity5: #0000000c;
+
+  // white
+  --white500: #ffffff;
+  --white_dark400: #b2b2b2;
+  --white_dark300: #666666;
+  --white_dark200: #191919;
+  --white_dark100: #0d0d0d;
+  --white_opacity70: #ffffffb2;
+  --white_opacity40: #ffffff66;
+  --white_opacity10: #ffffff19;
+  --white_opacity5: #ffffff0c;
+
+  // green
+  --green600: #1e925a;
+  --green500: #25b770;
+  --green400: #51c58d;
+  --green300: #beead5;
+  --green200: #eaf8f1;
+  --green100: #f4fbf8;
+  --green_opacity80: #25b770cc;
+  --green_opacity30: #25b7704c;
+  --green_opacity10: #25b77019;
+  --green_opacity5: #25b7700c;
+
+  // yellow
+  --yellow600: #cc9f01;
+  --yellow500: #ffc701;
+  --yellow400: #ffd234;
+  --yellow300: #ffefb3;
+  --yellow200: #fffae6;
+  --yellow100: #fffcf2;
+  --yellow_opacity80: #ffc701cc;
+  --yellow_opacity30: #ffc7014c;
+  --yellow_opacity10: #ffc70119;
+  --yellow_opacity5: #ffc7010c;
+
+  // red
+  --red600: #b43333;
+  --red500: #e14040;
+  --red400: #e76666;
+  --red300: #f6c6c6;
+  --red200: #fcecec;
+  --red100: #fdf5f5;
+  --red_opacity80: #e14040cc;
+  --red_opacity30: #e140404c;
+  --red_opacity10: #e1404019;
+  --red_opacity5: #e140400c;
+
+  // Support Color
+  // background
+  --background_dark: #0a0a0a;
+  --background_light: #fafdff;
+  --chart_color: linear-gradient(
+    180deg,
+    rgba(236, 128, 0, 0.3) 0%,
+    rgba(236, 128, 0, 0) 100%
+  );
+
+  // stock price color
+  --purple600: #a73bb9;
+  --purple500: #d14ae7;
+  --purple400: #da6eec;
+  --purple300: #f2c9f8;
+  --purple200: #fbedfd;
+  --purple100: #fcf6fe;
+  --purple_opacity80: #d14ae7cc;
+  --purple_opacity30: #d14ae74c;
+  --purple_opacity10: #d14ae719;
+  --purple_opacity5: #d14ae70c;
+
+  // cyan
+  --cyan600: #1da18e;
+  --cyan500: #24c9b1;
+  --cyan400: #50d4c1;
+  --cyan300: #beefe8;
+  --cyan200: #eafaf8;
+  --cyan100: #f4fcfb;
+  --cyan_opacity80: #24c9b1cc;
+  --cyan_opacity30: #24c9b14c;
+  --cyan_opacity10: #24c9b119;
+  --cyan_opacity5: #24c9b10c;
+
+  // custom
+  --gray19009: rgba(190, 190, 190, 0.9);
+  --black19002: rgba(190, 190, 190, 0.2);
+  --black190024: rgba(129, 129, 129, 0.24);
+  --black0025: rgba(0, 0, 0, 0.25);
+  --black01: #2d2e2f;
+  --darkTablerHeader: #18191a;
+  --lightTablerHeader: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.07) 0%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+  --darkTablerHeader2: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  --lightOverlay: linear-gradient(
+    180deg,
+    rgba(250, 253, 255, 0) 0%,
+    #fafdff 100%
+  );
+  --darkOverlay: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0a0a0a 100%);
+
+  --lightOverlay2: linear-gradient(
+    270deg,
+    #ffffff 58.85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  --darkOverlay2: linear-gradient(
+    270deg,
+    #191919 58.85%,
+    rgba(25, 25, 25, 0) 100%
+  );
+
+  --lightOverlay3: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 71.87%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+
+  --darkOverlay3: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+
+  --darkOverlay: rgba(10, 10, 10, 0.9);
+
+  --lightOverlay: rgba(250, 253, 255, 0.9);
+}

@@ -1,0 +1,220 @@
+// packages
+// @import 'swiper/css';
+// @import 'swiper/css/navigation';
+// @import 'swiper/css/pagination';
+// @import 'react-datepicker/dist/react-datepicker.css';
+// @import 'react-lazy-load-image-component/src/effects/blur.css';
+
+// libs
+@import './libs/table';
+@import './libs/tabs';
+@import './libs/input';
+@import './libs/dropdown';
+@import './libs/menu';
+@import './libs/dialog';
+@import './libs/grid-layout';
+@import './libs/nprogress';
+@import './libs/pagination';
+@import './libs/select';
+@import './libs/tooltip';
+@import './libs/notification';
+
+// customs
+@import './customs/animations';
+@import '../themes/theme.scss';
+@import './themes/colors';
+@import './themes/dark';
+@import './themes/light';
+
+// reset
+@import './reset';
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; // 100% = 16px, 1rem = 16px
+  min-height: 100%;
+  background-color: var(--backgroundDarkToBackgroundLight);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100%;
+}
+
+// body.dark-mode {
+//   background-color: var(--background_dark);
+// }
+
+// body.light-mode {
+//   background-color: var(--background_light);
+// }
+
+body.ant-scrolling-effect .header {
+  padding-right: 17px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--blue500);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// /* width */
+// ::-webkit-scrollbar {
+//   width: 8px;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   border-radius: 0px;
+// }
+
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   background: #888;
+// }
+
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #555;
+// }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.panel-resize-handle {
+  // --background-color: transparent;
+  // outline: none;
+  // justify-content: stretch;
+  // align-items: stretch;
+  // margin-right: -4px;
+  // width: 4px;
+  // display: flex;
+  // z-index: 9;
+
+  --background-color: transparent;
+  outline: none;
+  flex: 0 0 4px;
+  justify-content: stretch;
+  align-items: stretch;
+  display: flex;
+  margin-right: -4px;
+  margin-bottom: -4px;
+  z-index: 9;
+}
+
+.bottom-sheet > div {
+  background-color: var(--white_dark200);
+  z-index: 999;
+  & > div:first-child {
+    &::before {
+      background-color: var(--black400);
+      width: 48px;
+      height: 4px;
+    }
+  }
+}
+
+.react-datepicker__time {
+  color-scheme: light;
+}
+
+@media screen and (max-width: 999px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+style {
+  display: none !important;
+}
+
+.background-enter {
+  transform: translate(100%);
+}
+.background-enter.background-enter-active {
+  transform: translate(0%);
+  transition: transform 1000ms ease-in-out;
+}
+.background-leave {
+  transform: translate(0%);
+}
+.background-leave.background-leave-active {
+  transform: translate(-100%);
+  transition: transform 1000ms ease-in-out;
+}
+
+/* SLIDE_RIGHT */
+.slide-next-enter {
+  transform: translateX(100%);
+  background-color: var(--dc001);
+}
+.slide-next-enter.slide-next-enter-active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--dc001);
+  transform: translateX(0);
+  transition: all 250ms ease-in;
+}
+
+.slide-next-exit {
+  opacity: 0;
+}
+.slide-next-exit.slide-next-exit-active {
+  opacity: 1;
+  display: none;
+}
+
+/* SLIDE_RIGHT */
+.slide-pre-enter {
+  z-index: 0;
+}
+.slide-pre-enter.slide-pre-enter-active {
+  z-index: 0;
+}
+
+.slide-pre-exit {
+  transform: translateX(0%);
+  background-color: var(--dc001);
+  z-index: 1;
+}
+.slide-pre-exit.slide-pre-exit-active {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--dc001);
+  transform: translateX(100%);
+  transition: all 100ms ease-in;
+}
+
+// .slideRight-exit-active > div {
+//   transition: opacity 500ms;
+// }

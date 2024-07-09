@@ -1,0 +1,127 @@
+@import '../../themes/theme.scss';
+
+@mixin variantTypography($variant) {
+  font-family: $fontInter;
+
+  @if $variant ==heading_one {
+    font-size: $heading_one;
+    line-height: $leading_heading_one;
+    font-weight: $fw700;
+  }
+
+  @if $variant ==heading_two {
+    font-size: $heading_two;
+    line-height: $leading_heading_two;
+    font-weight: $fw700;
+  }
+
+  @if $variant ==heading_three {
+    font-size: $heading_three;
+    line-height: $leading_heading_three;
+    font-weight: $fw700;
+  }
+
+  @if $variant ==heading_fourth {
+    font-size: $heading_fourth;
+    line-height: $leading_heading_fourth;
+    font-weight: $fw700;
+  }
+
+  @if $variant ==heading_fifth {
+    font-size: $heading_fifth;
+    line-height: $leading_heading_fifth;
+    font-weight: $fw500;
+  }
+
+  @if $variant ==heading_six {
+    font-size: $heading_six;
+    line-height: $leading_heading_six;
+    font-weight: $fw700;
+  }
+
+  @if $variant ==sub_heading_one {
+    font-size: $sub_heading_one;
+    line-height: $leading_sub_heading_one;
+    font-weight: $fw600;
+  }
+
+  @if $variant ==sub_heading_two {
+    font-size: $sub_heading_two;
+    line-height: $leading_sub_heading_two;
+    font-weight: $fw500;
+  }
+
+  @if $variant ==sub_heading_three {
+    font-size: $sub_heading_three;
+    line-height: $leading_sub_heading_three;
+    font-weight: $fw600;
+  }
+
+  @if $variant ==sub_heading_four {
+    font-size: $sub_heading_four;
+    line-height: $leading_sub_heading_four;
+    font-weight: $fw500;
+  }
+
+  @if $variant ==body_one {
+    font-size: $body_one;
+    line-height: $leading_body_one;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==body_two {
+    font-size: $body_two;
+    line-height: $leading_body_two;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==body_content_one {
+    font-size: $body_content_one;
+    line-height: $leading_body_content_one;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==body_content_two {
+    font-size: $body_content_two;
+    line-height: $leading_body_content_two;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==body_content_three {
+    font-size: $body_content_three;
+    line-height: $leading_body_content_three;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==caption {
+    font-size: $caption;
+    line-height: $leading_caption;
+    font-weight: $fw400;
+  }
+
+  @if $variant ==caption_two {
+    font-size: $caption_two;
+    line-height: $leading_caption_two;
+    font-weight: $fw500;
+  }
+
+  @if $variant ==caption_three {
+    font-size: $caption_three;
+    line-height: $leading_caption_three;
+    font-weight: $fw600;
+  }
+
+  @if $variant ==small_one {
+    font-size: $small_one;
+    line-height: $leading_small_one;
+    font-weight: $fw400;
+  }
+
+
+  @if $variant ==small_two {
+    font-size: $small_two;
+    line-height: $leading_small_two;
+    font-weight: $fw500;
+  }
+
+}

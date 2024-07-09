@@ -1,0 +1,47 @@
+/* sekethon */
+@-webkit-keyframes sekethon-loading {
+  0% {
+    transform: translateX(-37%);
+  }
+  100% {
+    transform: translateX(37%);
+  }
+}
+@keyframes sekethon-loading {
+  0% {
+    transform: translateX(-37%);
+  }
+  100% {
+    transform: translateX(37%);
+  }
+}
+@keyframes opac {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes waves {
+  50% {
+    height: 20%;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes blackfridaybg {
+  25% {
+    background-color: var(--orange_opacity30);
+  }
+  50% {
+    background-color: var(--orange500);
+  }
+  75% {
+    background-color: var(--orange_opacity30);
+  }
+}
