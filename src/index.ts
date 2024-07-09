@@ -14,7 +14,6 @@ export { theme } from './themes/theme';
 export { default as GlobalStyles } from './components/GlobalStyles';
 export { default as DownloadPage } from './components/DownloadPage';
 
-export * from './apis';
 export * from './hooks';
 export * from './themes';
 export * from './utils';
