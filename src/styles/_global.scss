@@ -1,19 +1,14 @@
-// packages
-// @import 'swiper/css';
-// @import 'swiper/css/navigation';
-// @import 'swiper/css/pagination';
-// @import 'react-datepicker/dist/react-datepicker.css';
-// @import 'react-lazy-load-image-component/src/effects/blur.css';
+// reset
+@import './reset';
 
-// customs
-@import './customs/animations';
-@import './typo/theme.scss';
+// colors
 @import './themes/colors';
 @import './themes/dark';
 @import './themes/light';
 
-// reset
-@import './reset';
+// customs
+@import './customs/animations';
+@import './typo/typo';
 
 *,
 *::before,
