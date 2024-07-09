@@ -1,1 +1,1 @@
-export { default } from './main-axios';
+export * from './main-axios';

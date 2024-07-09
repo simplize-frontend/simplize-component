@@ -127,7 +127,7 @@ const handleRefreshToken = async (
 };
 
 // instance
-const mainAxios = MainAxios.getInstance({
+export const mainAxios = MainAxios.getInstance({
   baseURL: import.meta.env.VITE_BASE_API_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -240,5 +240,3 @@ mainAxios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export default mainAxios;
