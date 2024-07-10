@@ -45,7 +45,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
     const height =
       (childRef.current.offsetHeight + extentRef.current.offsetHeight + 16) /
       window.innerHeight;
-    childRef.current.style.height = "";
+    childRef.current.style.height = '';
 
     setFitHeight(height > 1 ? 1 : height < 0 ? 0 : height);
   }, [childRef, children, extentRef]);
@@ -131,6 +131,14 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
       extentRef.current?.removeEventListener('touchend', handleTouchend);
     };
   }, [extentRef, handleTouchmove, handleTouchend]);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = '';
+    }
+  }, [isOpen]);
 
   return (
     <div className={`${cx('wrapper')} ${isOpen ? cx('show') : cx('hide')}`}>
