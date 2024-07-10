@@ -1,3 +1,4 @@
+export * from './storage';
 export * from './format-price';
 export * from './jwt';
 export * from './local-data-handler';

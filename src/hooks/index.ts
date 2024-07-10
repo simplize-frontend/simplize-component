@@ -1,2 +1,2 @@
-export { default as useDebounce } from './use-debounce';
-export { default as useMediaQuery } from './use-media-query';
+export * from './use-debounce';
+export * from './use-media-query';

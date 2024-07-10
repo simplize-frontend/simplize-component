@@ -13,10 +13,9 @@ export { default as MediaInput } from './components/MediaInput';
 export { theme } from './themes/theme';
 export { default as GlobalStyles } from './components/GlobalStyles';
 export { default as DownloadPage } from './components/DownloadPage';
+export { default as MainLayout } from './layouts/MainLayout';
 
 export * from './hooks';
 export * from './themes';
 export * from './utils';
-export * from './utils/storage';
-export * from './layouts';
 export * from './types';
