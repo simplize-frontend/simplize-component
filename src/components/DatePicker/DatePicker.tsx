@@ -86,7 +86,7 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
   React.useEffect(() => {
     const newDate = new Date(
       rawValue.YYYY,
-      rawValue.MM,
+      rawValue.MM - 1,
       rawValue.DD,
       rawValue.hh,
       rawValue.mm
