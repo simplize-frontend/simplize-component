@@ -97,8 +97,8 @@ export const formatPercent = (percent = 0) => {
       percent % 0.1 === 0
         ? percent
         : percent % 0.01 === 0
-          ? percent.toFixed(1)
-          : percent.toFixed(2)
+        ? percent.toFixed(1)
+        : percent.toFixed(2)
     }%`;
   }
   return result;
@@ -137,4 +137,61 @@ export const getDigitFromValue = (value: number) => {
   }
 
   return 0;
+};
+
+export const formatPrice = (value: number | string) => {
+  if (!Number(value)) {
+    return `0`;
+  }
+
+  value = value.toString();
+  const priceNumber = parseFloat(value);
+  const absValue = Math.abs(priceNumber);
+
+  let digit: number;
+
+  if (absValue < 0.0000001) {
+    // 0.00000009876
+    digit = 0;
+  } else if (absValue < 0.000001) {
+    // 0.0000009876
+    digit = 10;
+  } else if (absValue < 0.00001) {
+    // 0.000009876
+    digit = 9;
+  } else if (absValue < 0.0001) {
+    // 0.00009876
+    digit = 8;
+  } else if (absValue < 0.001) {
+    // 0.0009876
+    digit = 7;
+  } else if (absValue < 0.01) {
+    // 0.009876
+    digit = 6;
+  } else if (absValue < 0.1) {
+    // 0.09876
+    digit = 5;
+  } else if (absValue < 1) {
+    // 0.9876
+    digit = 4;
+  } else if (absValue < 10) {
+    // 9.876
+    digit = 3;
+  } else if (absValue < 100) {
+    // 98.76
+    digit = 2;
+  } else if (absValue < 1000) {
+    // 987.6
+    digit = 1;
+  } else {
+    // 9876
+    digit = 0;
+  }
+
+  const formattedPrice = priceNumber.toLocaleString('en-US', {
+    minimumFractionDigits: digit,
+    maximumFractionDigits: digit,
+  });
+
+  return formattedPrice;
 };
