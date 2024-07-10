@@ -140,7 +140,12 @@ const DatePicker: React.FC<Props> = (props): JSX.Element => {
             <div className={datePicker('shadowTop')}></div>
             <div className={datePicker('shadowBottom')}></div>
             <div className={datePicker('scrollSelect')}></div>
-            <div className={datePicker('sideWrapper', 'sideWrapperLeft')}>
+            <div
+              className={datePicker(
+                'sideWrapper',
+                type === 'datetime' ? 'sideWrapperLeft' : 'sideWrapperFull'
+              )}
+            >
               <ScrollPicker
                 defaultValue={rawValue.DD}
                 listSelect={DATES || []}
