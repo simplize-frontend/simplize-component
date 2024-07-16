@@ -4,26 +4,25 @@ import styles from './styles.module.scss';
 import Typography from '../Typography';
 const header = classNames.bind(styles);
 
-interface Props {
-  ref?: any;
-  title?: string | React.ReactNode;
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
+  contentCenter?: string | React.ReactNode;
   contentRight?: React.ReactNode;
   contentLeft?: React.ReactNode;
 }
 
 const Header: React.FC<Props> = (props): JSX.Element => {
-  const { ref, title, contentLeft, contentRight } = props;
+  const { contentCenter, contentLeft, contentRight, ...rest } = props;
 
   return (
-    <div className={header('wrapper')} ref={ref}>
+    <div {...rest} className={header('wrapper', rest.className)}>
       <div className={header('content-left')}>
         {contentLeft ? contentLeft : <></>}
       </div>
       <div className={header('title')}>
-        {typeof title === 'string' ? (
-          <Typography variant="sub_heading_two">{title}</Typography>
+        {typeof contentCenter === 'string' ? (
+          <Typography variant="sub_heading_two">{contentCenter}</Typography>
         ) : (
-          title
+          contentCenter
         )}
       </div>
       <div className={header('content-right')}>
