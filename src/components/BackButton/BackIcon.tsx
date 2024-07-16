@@ -2,7 +2,6 @@ import React, { SVGProps } from 'react';
 
 export const BackIcon = React.forwardRef<any, SVGProps<SVGSVGElement>>(
   (props, ref) => {
-
     return (
       <svg
         {...props}
@@ -15,7 +14,7 @@ export const BackIcon = React.forwardRef<any, SVGProps<SVGSVGElement>>(
       >
         <path
           d="M10 1L2 9L10 17"
-          stroke="#999999"
+          stroke={props.stroke || '#4d4d4d'}
           strokeWidth={2}
           strokeLinecap="round"
         />

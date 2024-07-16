@@ -24,6 +24,7 @@
   position: absolute;
   width: fit-content;
   left: 0;
+  z-index: 1;
   padding: 16px;
   top: 50%;
   transform: translateY(-50%);
@@ -31,6 +32,7 @@
 .content-right {
   position: absolute;
   width: fit-content;
+  z-index: 1;
   padding: 16px;
   right: 0;
   top: 50%;
