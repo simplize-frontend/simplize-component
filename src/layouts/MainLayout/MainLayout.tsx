@@ -8,14 +8,15 @@ const cx = classNames.bind(styles);
 interface Props {
   children: React.ReactNode;
   header?: any;
+  isStickyHeader?: boolean;
 }
 
 const MainLayout: React.FC<Props> = (props): JSX.Element => {
-  const { children, header } = props;
+  const { children, header, isStickyHeader = false } = props;
   const headerRef = React.useRef<any>();
 
   React.useEffect(() => {
-    if (!headerRef?.current) return;
+    if (!headerRef?.current || !isStickyHeader) return;
     let offsetY = headerRef.current.offsetTop;
     const handleSticky = () => {
       if (window.scrollY < offsetY && offsetY - window.scrollY >= 56) {
@@ -32,7 +33,7 @@ const MainLayout: React.FC<Props> = (props): JSX.Element => {
     return () => {
       window.removeEventListener('scroll', handleSticky);
     };
-  }, [headerRef, window]);
+  }, [headerRef, window, isStickyHeader]);
 
   return (
     <div className={cx('wrapper')}>
