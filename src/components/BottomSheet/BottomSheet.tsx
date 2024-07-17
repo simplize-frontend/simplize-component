@@ -136,7 +136,7 @@ const BottomSheet: React.FC<Props> = (props): JSX.Element => {
     if (isOpen) {
       document.body.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflowY = '';
+      document.body.style.overflowY = 'auto';
     }
   }, [isOpen]);
 
