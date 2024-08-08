@@ -14,7 +14,7 @@ export const BackIcon = React.forwardRef<any, SVGProps<SVGSVGElement>>(
       >
         <path
           d="M10 1L2 9L10 17"
-          stroke={props.stroke || '#4d4d4d'}
+          stroke={props.stroke || '#999999'}
           strokeWidth={2}
           strokeLinecap="round"
         />
