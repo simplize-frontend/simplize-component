@@ -21,11 +21,13 @@
 .sticky {
   & > div {
     transform: translateY(0);
+    position: fixed;
   }
 }
 
 .hide {
   & > div {
     transform: translateY(-56px);
+    position: fixed;
   }
 }

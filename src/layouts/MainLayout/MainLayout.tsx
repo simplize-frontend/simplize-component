@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { useNotch } from '../../hooks/use-notch';
+import { useNotch } from '../..//hooks/use-notch';
 import Header from '../../components/Header';
 
 const cx = classNames.bind(styles);
@@ -31,6 +31,7 @@ const MainLayout: React.FC<Props> = (props): JSX.Element => {
         offsetY = window.scrollY;
       } else if (window.scrollY >= offsetY) {
         offsetY = window.scrollY;
+        console.log(headerRef.current.classList.contains(cx('sticky')));
         headerRef.current.classList.remove(cx('sticky'));
         headerRef.current.classList.add(cx('hide'));
       }
@@ -47,7 +48,7 @@ const MainLayout: React.FC<Props> = (props): JSX.Element => {
       style={
         isNotch
           ? {
-              marginTop: `${height}px`,
+              paddingTop: `${height}px`,
             }
           : {}
       }
