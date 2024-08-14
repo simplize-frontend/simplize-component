@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 
 const cx = classNames.bind(styles);
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   children: React.ReactNode;
   header?: any;
   isStickyHeader?: boolean;
@@ -14,7 +14,13 @@ interface Props {
 }
 
 const MainLayout: React.FC<Props> = (props): JSX.Element => {
-  const { children, header, isStickyHeader = false, isNotch = true } = props;
+  const {
+    children,
+    header,
+    isStickyHeader = false,
+    isNotch = true,
+    ...newProps
+  } = props;
   const { height } = useNotch();
   const headerRef = React.useRef<any>();
 
@@ -44,13 +50,15 @@ const MainLayout: React.FC<Props> = (props): JSX.Element => {
 
   return (
     <div
-      className={cx('wrapper')}
+      {...newProps}
+      className={`${cx('wrapper')} ${newProps.className}`}
       style={
         isNotch
           ? {
               paddingTop: `${height}px`,
+              ...newProps.style,
             }
-          : {}
+          : newProps.style
       }
     >
       <div ref={headerRef} className={cx('header-wrapper')}>
