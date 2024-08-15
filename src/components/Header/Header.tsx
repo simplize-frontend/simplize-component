@@ -22,6 +22,7 @@ const Header: React.FC<Props> = (props): JSX.Element => {
       style={{
         position: 'fixed',
         top: height + 'px',
+        ...rest,
       }}
     >
       <div
