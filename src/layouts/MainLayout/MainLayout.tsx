@@ -37,7 +37,6 @@ const MainLayout: React.FC<Props> = (props): JSX.Element => {
         offsetY = window.scrollY;
       } else if (window.scrollY >= offsetY) {
         offsetY = window.scrollY;
-        console.log(headerRef.current.classList.contains(cx('sticky')));
         headerRef.current.classList.remove(cx('sticky'));
         headerRef.current.classList.add(cx('hide'));
       }
