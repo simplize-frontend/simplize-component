@@ -17,7 +17,6 @@ const BackButton: React.FC<Props> = (props): JSX.Element => {
     <div
       className={cx('wrapper')}
       onClick={() => {
-        console.log();
         if (location.pathname === '/') {
           NativeMethod.closeWebview();
         } else {
