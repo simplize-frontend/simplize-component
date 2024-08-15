@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
+import { useNotch } from '../../hooks';
 import Typography from '../Typography';
 const header = classNames.bind(styles);
 
@@ -12,9 +13,23 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
 
 const Header: React.FC<Props> = (props): JSX.Element => {
   const { contentCenter, contentLeft, contentRight, ...rest } = props;
+  const { height } = useNotch();
 
   return (
-    <div {...rest} className={header('wrapper', rest.className)}>
+    <div
+      {...rest}
+      className={header('wrapper', rest.className)}
+      style={{
+        position: 'fixed',
+        top: height + 'px',
+      }}
+    >
+      <div
+        className={header('overlay')}
+        style={{
+          height: height + 'px',
+        }}
+      ></div>
       <div className={header('content-left')}>
         {contentLeft ? contentLeft : <></>}
       </div>
