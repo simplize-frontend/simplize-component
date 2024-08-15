@@ -19,7 +19,7 @@ jobs:
 
       - name: Configure npm to use the registry and token
         run: |
-          echo "_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > ./.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > ./.npmrc
 
       - name: Install NPM dependencies
         run: npm install
