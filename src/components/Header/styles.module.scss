@@ -11,6 +11,14 @@
   justify-content: space-between;
   transition: ease 0.4s;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  opacity: 1;
+}
 .title {
   position: absolute;
   width: 100%;
