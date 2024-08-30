@@ -1,0 +1,54 @@
+@keyframes opac {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.dialogMask {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  height: 100vh;
+  background-color: #00000080;
+  animation: opac .3s;
+  left: 0;
+  top: 0;
+  width: 100vw;
+}
+
+.dialogOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 258px;
+  background-color: var(--dc056);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--dc056);
+  border-radius: 8px;
+  max-width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  -webkit-border-radius: 8px
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.dialogBody {
+  padding: 8px 16px 0px 16px;
+}

@@ -1,0 +1,33 @@
+.text {
+  color: var(--dc015);
+}
+
+.textTitle {
+  color: var(--gray200);
+}
+
+.wrapper {
+  max-width: 258px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.wrapperButton {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--white_opacity10);
+  margin: 16px -16px 0 -16px;
+}
+
+.textCancel {
+  color: var(--gray300);
+  border-right: 1px solid var(--white_opacity10);
+  width: 50%;
+  padding: 10px 51px;
+}
+
+.textOk {
+  color: var(--blue500);
+  width: 50%;
+  padding: 10px 32px;
+}
