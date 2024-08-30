@@ -41,6 +41,7 @@ const UpgradeDialog: React.FC<Props> = (props): JSX.Element => {
         <Typography
           variant="sub_heading_four"
           className={cx('textOk')}
+          style={{ color: 'var(--blue500)' }}
           onClick={onOk}
         >{`Nâng cấp`}</Typography>
       </div>
