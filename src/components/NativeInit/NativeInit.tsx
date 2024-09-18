@@ -29,6 +29,14 @@ const NativeInit: React.FC<Props> = (props) => {
     const theme = localStorage.getItem('sim-theme') || 'dark';
     getUserInfo();
     document.getElementsByTagName('html')[0]!.setAttribute('data-theme', theme);
+    document
+      .getElementsByTagName('html')[0]!
+      .setAttribute(
+        'style',
+        theme === 'dark'
+          ? 'background-color: #0a0a0a'
+          : 'background-color: #FAFDFF'
+      );
     NativeMethod.loading.loadingDone();
     NativeMethod.addEventListener({
       name: 'JsToNative_navigate',
