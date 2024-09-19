@@ -9,7 +9,7 @@
 .heading-lorem {
   text-align: center;
   display: block;
-  color: var(--gray300);
+  color: var(--dc014);
   padding: 0 16px;
   width: 100%;
   margin: 0 auto;
@@ -28,9 +28,17 @@
   margin-left: 0;
 }
 
+:root,
+[data-theme='dark'] {
+  --btn_bg_download: var(--white_opacity70);
+}
+[data-theme='light'] {
+  --btn_bg_download: var(--black_opacity5);
+}
+
 .heading-store {
   display: block;
-  background-color: var(--white_opacity70);
+  background-color: var(--btn_bg_download);
   border-radius: 20px;
   margin: 24px 16px;
   height: 56px;

@@ -3,7 +3,7 @@
 }
 
 .textTitle {
-  color: var(--gray200);
+  color: var(--dc013);
 }
 
 .wrapper {
@@ -15,13 +15,13 @@
 .wrapperButton {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid var(--white_opacity10);
+  border-top: 1px solid var(--dc032);
   margin: 16px -16px 0 -16px;
 }
 
 .textCancel {
-  color: var(--gray300);
-  border-right: 1px solid var(--white_opacity10);
+  color: var(--dc015);
+  border-right: 1px solid var(--dc032);
   width: 50%;
   padding: 10px 51px;
 }
