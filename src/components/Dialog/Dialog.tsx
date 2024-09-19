@@ -21,9 +21,7 @@ const Dialog = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         <div className={cx('dialogMask')} onClick={onClose} />
         <div className={cx('dialogOverlay', className)} ref={ref} {...rest}>
           <div className={cx('dialog')} onClick={(e) => e.stopPropagation()}>
-            <div className={cx('dialogHeader')}>
-              {title}
-            </div>
+            <div className={cx('dialogHeader')}>{title}</div>
             <div className={cx('dialogBody')}>{children}</div>
           </div>
         </div>
