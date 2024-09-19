@@ -1,6 +1,6 @@
 .selected-wrapper {
   padding: 14px 16px;
-  border: var(--black400) 1px solid;
+  border: var(--dc045) 1px solid;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -17,11 +17,11 @@
 
 .title {
   padding: 8px 16px;
-  color: var(--gray300) !important;
+  color: var(--dc014) !important;
 }
 
 .active {
-  background-color: var(--white_opacity5);
+  background-color: var(--dc038);
 }
 
 .container {
@@ -37,7 +37,7 @@
 
 .disable {
   * {
-    color: var(--gray300) !important;
+    color: var(--dc014) !important;
   }
 }
 
@@ -48,4 +48,8 @@
   align-items: center;
   justify-content: space-between;
   // transition: background 0.3s;
+}
+
+.label {
+  color: var(--dc014);
 }
