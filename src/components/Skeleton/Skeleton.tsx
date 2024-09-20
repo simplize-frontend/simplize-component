@@ -4,22 +4,22 @@ import styles from './styles.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<'div'> {
   width?: number | string;
   height?: number | string;
-  cssCustom?: string;
 }
 
-const Skeleton: React.FC<Props> = ({ width = 50, height = 50, cssCustom }) => {
-  const dynamicClass = cssCustom ? cx('getWrapperCss', cssCustom) : cx('getWrapperCss');
+const Skeleton: React.FC<Props> = (props) => {
+  const { width = 50, height = 50, className, ...rest } = props;
 
   const styleWidth = typeof width === 'number' ? `${width}px` : width;
   const styleHeight = typeof height === 'number' ? `${height}px` : height;
 
   return (
     <div
-      className={dynamicClass}
+      className={cx('getWrapperCss', className)}
       style={{ width: styleWidth, height: styleHeight }}
+      {...rest}
     />
   );
 };
