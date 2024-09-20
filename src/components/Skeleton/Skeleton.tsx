@@ -10,16 +10,16 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 const Skeleton: React.FC<Props> = (props) => {
-  const { width = 50, height = 50, className, ...rest } = props;
+  const { width = 50, height = 50, className, style, ...rest } = props;
 
   const styleWidth = typeof width === 'number' ? `${width}px` : width;
   const styleHeight = typeof height === 'number' ? `${height}px` : height;
 
   return (
     <div
-      className={cx('getWrapperCss', className)}
-      style={{ width: styleWidth, height: styleHeight }}
       {...rest}
+      className={cx('getWrapperCss', className)}
+      style={{ width: styleWidth, height: styleHeight, ...style }}
     />
   );
 };
