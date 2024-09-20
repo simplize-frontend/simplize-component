@@ -16,6 +16,7 @@ export { default as DownloadPage } from './components/DownloadPage';
 export { default as MainLayout } from './layouts/MainLayout';
 export { default as Dialog } from './components/Dialog';
 export { default as UpgradeDialog } from './components/UpgradeDialog';
+export { default as Skeleton } from './components/Skeleton';
 
 export * from './hooks';
 export * from './themes';
