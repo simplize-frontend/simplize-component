@@ -11,6 +11,7 @@
   .overlay {
     display: none;
   }
+
   .content {
     top: 100vh !important;
   }
@@ -27,7 +28,7 @@
   width: 100vw;
   top: 0;
   height: 100vh;
-  background-color: rgba($color: var(--dc001), $alpha: 0.5);
+  background-color: var(--dc076);
 }
 
 .content {
