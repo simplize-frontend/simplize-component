@@ -17,16 +17,14 @@ export interface valueProp {
 interface Props extends React.ComponentPropsWithoutRef<'div'> {
   defaultValues?: any[];
   location?: '0' | '1/4' | '1/2' | '3/4' | 'full' | 'fit';
-  elementDisplay?: (option: {
-    value: any;
-    label: any;
-    isDisable?: boolean;
-  }) => JSX.Element;
+  displayElement?: (
+    option: { value: any; label: any; isDisable?: boolean }[],
+    selected: any[]
+  ) => JSX.Element;
   options: valueProp[];
-  onChange: (value) => void;
+  onSelectedChange: (value: any[]) => void;
   header?: JSX.Element;
   onDisableSelect?: (value) => void;
-  multiple?: boolean;
   disable?: boolean;
 }
 
@@ -34,12 +32,11 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
   const {
     defaultValues = [],
     options,
-    onChange,
+    onSelectedChange,
     location = 'fit',
     onDisableSelect,
     header,
-    elementDisplay,
-    // multiple,
+    displayElement,
     disable,
     ...rest
   } = props;
@@ -57,9 +54,9 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
           ? selected.filter((item) => item !== value)
           : [...selected, value]
       );
-      onChange(selected);
+      onSelectedChange(selected);
     },
-    [setSelected, selected]
+    [onSelectedChange, selected]
   );
 
   React.useEffect(() => {
@@ -89,8 +86,8 @@ const MultipleSelect: React.FC<Props> = (props): JSX.Element => {
           width: 'fit-content',
         }}
       >
-        {elementDisplay !== undefined ? (
-          elementDisplay(options.filter((e) => e.value === selected)[0])
+        {displayElement !== undefined ? (
+          displayElement(options, selected)
         ) : (
           <div
             {...rest}

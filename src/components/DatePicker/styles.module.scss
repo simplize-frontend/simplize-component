@@ -1,9 +1,5 @@
 .label {
-  color: var(--gray300);
-}
-
-.datePickerWrapper {
-  width: 100%;
+  color: var(--dc014);
 }
 
 .datePicker {
@@ -40,12 +36,6 @@
   }
 }
 
-.datePickerIcon {
-  position: absolute;
-  right: 16px;
-  top: -33px;
-}
-
 .scrollWrapper {
   overflow-x: hidden;
   overflow-y: auto;
@@ -73,22 +63,6 @@
 // .sideSpace {
 //   margin-left: 20px;
 // }
-.scrollItemWrapper {
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  width: calc(100% / 3);
-}
-
-.scrollItem {
-  width: 100%;
-  min-height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
 
 .scrollSelect {
   position: absolute;
@@ -96,7 +70,7 @@
   left: 0;
   height: 35px;
   width: 100%;
-  background-color: #161616;
+  background-color: var(--dc026);
   border-radius: 4px;
   z-index: -1;
   -webkit-border-radius: 4px;
@@ -122,7 +96,11 @@
 
 .shadowTop {
   position: absolute;
-  background: linear-gradient(180deg, #191919 0%, rgba(25, 25, 25, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--dc023) 0%,
+    rgba(25, 25, 25, 0) 100%
+  );
   z-index: 1;
   pointer-events: none;
   width: 100%;
@@ -134,7 +112,11 @@
 
 .shadowBottom {
   position: absolute;
-  background: linear-gradient(180deg, rgba(25, 25, 25, 0) 0%, #191919 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(25, 25, 25, 0) 0%,
+    var(--dc023) 100%
+  );
   z-index: 1;
   pointer-events: none;
   width: 100%;
@@ -146,7 +128,7 @@
 
 .disable {
   * {
-    color: var(--gray400) !important;
+    color: var(--dc061) !important;
     pointer-events: none;
   }
   & .scrollSelect {

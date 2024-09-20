@@ -5,12 +5,11 @@ import DownloadPage from '../DownloadPage';
 interface Props {
   children: any;
   dispathUserInfo: any;
-  theme: string;
   navigate: any;
   initApi: any;
 }
 const NativeInit: React.FC<Props> = (props) => {
-  const { children, dispathUserInfo, theme, navigate, initApi } = props;
+  const { children, dispathUserInfo, navigate, initApi } = props;
   const [isInit, setIsInit] = React.useState(false);
   const [isShowBlockPage, setShowBlockPage] = React.useState(false);
 
@@ -29,6 +28,14 @@ const NativeInit: React.FC<Props> = (props) => {
     const theme = localStorage.getItem('sim-theme') || 'dark';
     getUserInfo();
     document.getElementsByTagName('html')[0]!.setAttribute('data-theme', theme);
+    document
+      .getElementsByTagName('html')[0]!
+      .setAttribute(
+        'style',
+        theme === 'dark'
+          ? 'background-color: #0a0a0a'
+          : 'background-color: #FAFDFF'
+      );
     NativeMethod.loading.loadingDone();
     NativeMethod.addEventListener({
       name: 'JsToNative_navigate',
@@ -36,7 +43,7 @@ const NativeInit: React.FC<Props> = (props) => {
         navigate(params);
       },
     });
-  }, [navigate, NativeMethod, getUserInfo, theme]);
+  }, [navigate, NativeMethod, getUserInfo]);
 
   React.useEffect(() => {
     if (isInit) return;

@@ -18,6 +18,7 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
   options: { value: any; label: any; isDisable?: boolean }[];
   onChange: (value) => void;
   header?: JSX.Element;
+  label?: string;
   onDisableSelect?: (value) => void;
   disable?: boolean;
 }
@@ -32,6 +33,7 @@ const Select: React.FC<Props> = (props): JSX.Element => {
     header,
     elementDisplay,
     disable,
+    label = 'Vui lòng chọn',
     ...rest
   } = props;
   const [isOpenBottomsheet, setIsOpenBottomsheet] = React.useState(false);
@@ -66,7 +68,9 @@ const Select: React.FC<Props> = (props): JSX.Element => {
             )}
           >
             <Typography variant="body_two" className={cx('line-limit')}>
-              {options.filter((e) => e.value === selected)[0].label}
+              {options.filter((e) => e.value === selected)[0]?.label || (
+                <span className={cx('label')}>{label}</span>
+              )}
             </Typography>
             <div
               style={{
