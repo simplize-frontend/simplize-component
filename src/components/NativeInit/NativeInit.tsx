@@ -25,20 +25,10 @@ const NativeInit: React.FC<Props> = (props) => {
   }, [NativeMethod]);
 
   const action = React.useCallback(() => {
-    const theme = localStorage.getItem('sim-theme') || 'dark';
     getUserInfo();
-    document.getElementsByTagName('html')[0]!.setAttribute('data-theme', theme);
-    document
-      .getElementsByTagName('html')[0]!
-      .setAttribute(
-        'style',
-        theme === 'dark'
-          ? 'background-color: #0a0a0a'
-          : 'background-color: #FAFDFF'
-      );
     setTimeout(() => {
       NativeMethod.loading.loadingDone();
-    }, 50);
+    }, 10);
     NativeMethod.addEventListener({
       name: 'JsToNative_navigate',
       handle: (params) => {
@@ -62,6 +52,20 @@ const NativeInit: React.FC<Props> = (props) => {
       clearInterval(intervalId);
     };
   }, [action]);
+
+  React.useEffect(() => {
+    const theme = localStorage.getItem('sim-theme') || 'dark';
+    document.getElementsByTagName('html')[0]!.setAttribute('data-theme', theme);
+    document
+      .getElementsByTagName('html')[0]!
+      .setAttribute(
+        'style',
+        theme === 'dark'
+          ? 'background-color: #0a0a0a'
+          : 'background-color: #FAFDFF'
+      );
+    console.log(theme);
+  }, []);
 
   React.useEffect(() => {
     if (isInit) return;
