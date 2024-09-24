@@ -36,7 +36,9 @@ const NativeInit: React.FC<Props> = (props) => {
           ? 'background-color: #0a0a0a'
           : 'background-color: #FAFDFF'
       );
-    NativeMethod.loading.loadingDone();
+    setTimeout(() => {
+      NativeMethod.loading.loadingDone();
+    }, 50);
     NativeMethod.addEventListener({
       name: 'JsToNative_navigate',
       handle: (params) => {
