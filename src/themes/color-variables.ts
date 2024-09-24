@@ -274,6 +274,7 @@ const dynamicColors = {
   dc073: 'var(--dc073)',
   dc074: 'var(--dc074)',
   dc075: 'var(--dc075)',
+  dc076: 'var(--dc076)',
 };
 
 export const colorVariables = {
