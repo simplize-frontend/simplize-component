@@ -103,7 +103,7 @@ export const colors = {
   // Support Color
   // background
   background_dark: '#0A0A0A',
-  background_light: '#FAFDFF',
+  background_light: '#fafdff',
   chart_color:
     'linear-gradient(180.0deg, rgba(236, 128, 0, 0.3) 0%, rgba(236, 128, 0, 0) 100%)',
 
